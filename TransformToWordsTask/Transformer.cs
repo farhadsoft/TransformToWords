@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 
 #pragma warning disable CA1822
 
@@ -37,7 +38,7 @@ namespace TransformToWordsTask
                 return "Positive Infinity";
             }
 
-            string result = default;
+            StringBuilder str = new StringBuilder();
             var nums = number.ToString(CultureInfo.CurrentCulture).ToCharArray();
 
             for (int i = 0; i < nums.Length; i++)
@@ -45,55 +46,57 @@ namespace TransformToWordsTask
                 switch (nums[i])
                 {
                     case '-':
-                        result += "minus";
+                        str.Append("minus");
                         break;
                     case '+':
-                        result += "plus";
+                        str.Append("plus");
                         break;
                     case 'E':
-                        result += "E";
+                        str.Append("E");
                         break;
                     case '0':
-                        result += "zero";
+                        str.Append("zero");
                         break;
                     case '1':
-                        result += "one";
+                        str.Append("one");
                         break;
                     case '2':
-                        result += "two";
+                        str.Append("two");
                         break;
                     case '3':
-                        result += "three";
+                        str.Append("three");
                         break;
                     case '4':
-                        result += "four";
+                        str.Append("four");
                         break;
                     case '5':
-                        result += "five";
+                        str.Append("five");
                         break;
                     case '6':
-                        result += "six";
+                        str.Append("six");
                         break;
                     case '7':
-                        result += "seven";
+                        str.Append("seven");
                         break;
                     case '8':
-                        result += "eight";
+                        str.Append("eight");
                         break;
                     case '9':
-                        result += "nine";
+                        str.Append("nine");
                         break;
                     case ',':
                     case '.':
-                        result += "point";
+                        str.Append("point");
                         break;
                 }
 
                 if (i < nums.Length - 1)
                 {
-                    result += " ";
+                    str.Append(" ");
                 }
             }
+
+            string result = str.ToString();
 
             return char.ToUpper(result[0], CultureInfo.CurrentCulture) + result[1..];
         }
