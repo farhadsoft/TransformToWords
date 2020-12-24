@@ -84,6 +84,7 @@ namespace TransformToWordsTask
                         result += "nine";
                         break;
                     case ',':
+                    case '.':
                         result += "point";
                         break;
                 }
